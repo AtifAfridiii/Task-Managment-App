@@ -58,7 +58,6 @@ void reset() {
     _period =  DateTime.now().hour >= 12 ? "PM" : "AM" ;
     notifyListeners();
   }
-//_userSelectedTime = '${result.hour.toString().padLeft(2, '0')}:${result.minute.toString().padLeft(2, '0')} ${result.period}';
 
   SelectTime copyWith() {
     final copy = SelectTime();

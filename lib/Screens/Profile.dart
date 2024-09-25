@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
@@ -28,16 +27,16 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home(),)) ;
-        }, icon: Icon(Icons.close)),
-        title: Text('Profile', style:  TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Home(),)) ;
+        }, icon: const Icon(Icons.close)),
+        title: const Text('Profile', style:  TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
       body: SafeArea(
         child: Column(
          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Gap(35),
+            const Gap(35),
             Center(
               child: AvatarGlow(
               startDelay: const Duration(milliseconds: 1000),
@@ -58,23 +57,23 @@ class _ProfileState extends State<Profile> {
               ),
                             )
             ),
-            Gap(11),
+            const Gap(11),
             StreamBuilder(
             stream: FirebaseFirestore
             .instance
             .collection('Task')
             .where('doc_id',isEqualTo: Currentuser.currentUser!.uid).snapshots(),
              builder:(context, snapshot) {
-               return Text(userEmail.toString(), style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),);
+               return Text(userEmail.toString(), style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 17),);
              }, ),
-             Gap(11),
-             _buildList(Icon(Icons.key_outlined),Text('Change account passoward'), Icon(Icons.chevron_right),ontap: (){
+             const Gap(11),
+             _buildList(const Icon(Icons.key_outlined),const Text('Change account passoward'), const Icon(Icons.chevron_right),ontap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => ChangePassword(),));
              }),
-             _buildList(Icon(Icons.gif_box),Text('about us'), Icon(Icons.chevron_right),ontap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => About(),));
+             _buildList(const Icon(Icons.gif_box),const Text('about us'), const Icon(Icons.chevron_right),ontap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const About(),));
              }),
-             _buildList(Icon(Icons.logout,color: Colors.red,),Text('Log out',style: TextStyle(color: Colors.red),), Icon(Icons.chevron_right),
+             _buildList(const Icon(Icons.logout,color: Colors.red,),const Text('Log out',style: TextStyle(color: Colors.red),), const Icon(Icons.chevron_right),
              ontap: (){
                auth1.signOut().then((value) {
                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Onboarding(),),(Route<dynamic> route) => false,);

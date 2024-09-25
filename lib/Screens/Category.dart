@@ -80,7 +80,7 @@ class _CreateCategoryState extends State<CreateCategory> {
                      return  FilledButton(
                       onPressed: () {
                         if (categoryController.text.isNotEmpty && val.selectedIcon != null) {
-                          // Create the category and pass it back to the previous screen
+                          // Created category and pass it back to the previous screen
                           Navigator.pop(context, {
                             'name': categoryController.text,
                             'icon': val.selectedIcon,

@@ -113,7 +113,7 @@ class _DetailsState extends State<Details> {
                 color: Colors.grey.shade700,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child:  Center(child: Text(widget.priority, style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),),),
+              child:  Center(child: Text(widget.priority, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),),),
             ),
           ),
           ListTile(
@@ -128,7 +128,7 @@ class _DetailsState extends State<Details> {
     ),
   
    
-  widget.isComplete? Text('') : GestureDetector(
+  widget.isComplete? const Text('') : GestureDetector(
     onTap: (){
         ShowMydialog(context,widget.title,widget.subtitle,widget.id);
     },

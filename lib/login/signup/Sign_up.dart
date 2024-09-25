@@ -44,7 +44,7 @@ class _SignUpState extends State<SignUp> {
                       password:_passoward.text.toString() ).then((value) {
 
             // ignore: use_build_context_synchronously
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             elevation: 0,
             behavior: SnackBarBehavior.floating,
             backgroundColor: Colors.transparent,
@@ -64,7 +64,7 @@ class _SignUpState extends State<SignUp> {
                      
                      },).whenComplete(() {
       authProvider.setLoading(false);
-    });;;
+    });
                      
                    }else{
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Password does not match or email is miss used '),
@@ -209,7 +209,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   onPressed: (){
                  RegisterUser();
-                }, child: valie.isLoading? CircularProgressIndicator(color: Colors.white,) : Text('Register',style: TextStyle(color: Colors.white),));
+                }, child: valie.isLoading? const CircularProgressIndicator(color: Colors.white,) : const Text('Register',style: TextStyle(color: Colors.white),));
  
                 },)             ),
               const Gap(31),

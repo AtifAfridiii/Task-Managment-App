@@ -64,7 +64,7 @@ class CenterProgressPie extends StatelessWidget {
               width: 190,
               foregroundDecoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  //color: Colors.white
+                 
                   backgroundBlendMode: BlendMode.overlay,
                   gradient: LinearGradient(begin: Alignment.topCenter, colors: [
                     Colors.black,

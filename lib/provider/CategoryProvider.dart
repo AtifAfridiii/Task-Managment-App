@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class CategoryProvider with ChangeNotifier {
-  List<Map<String, dynamic>> _categories = [
+  final List<Map<String, dynamic>> _categories = [
     {'icon': CupertinoIcons.headphones, 'name': 'Music'},
     {'icon': CupertinoIcons.layers, 'name': 'Layers'},
     {'icon': CupertinoIcons.game_controller, 'name': 'Games'},

@@ -33,7 +33,7 @@ class Digi_Watch extends StatelessWidget {
                     "Focus Mode",
                     style: TextStyle(
                         fontSize: 25,
-                        color:value.isDarkMode? Colors.white: Color.fromRGBO(49, 68, 105, 1),
+                        color:value.isDarkMode? Colors.white: const Color.fromRGBO(49, 68, 105, 1),
                         fontWeight: FontWeight.bold),
                   ),
                 ],

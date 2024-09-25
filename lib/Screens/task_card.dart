@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
@@ -16,7 +15,7 @@ class TaskCard extends StatelessWidget {
   final String id;
   final String priority ;
   const TaskCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     required this.time,
@@ -24,7 +23,7 @@ class TaskCard extends StatelessWidget {
     required this.isCompleted,
     required this.id,
     required this.priority
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class TaskCard extends StatelessWidget {
       child: Consumer<ThemeProvider>(
         builder: (context, val, child) {
         return Card(
-        color:val.isDarkMode?  Color(0xff547d5b) : const Color(0xffe2dfd2),
+        color:val.isDarkMode?  const Color(0xff547d5b) : const Color(0xffe2dfd2),
         child: Column(
           children: [
             ListTile(
@@ -96,10 +95,10 @@ class TaskCard extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Center(
-                                child: Text(priority,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),)
+                                child: Text(priority,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),)
                               ),
                             ),
-                    Gap(11),
+                    const Gap(11),
                   Container(
                   width: 45,
                   decoration: BoxDecoration(

@@ -38,7 +38,7 @@ class _LoginState extends State<Login> {
   if(formkey.currentState!.validate()){
      authProvider.setLoading(true);
  auth.signInWithEmailAndPassword(email: _email.text, password: _passoward.text).then((value) {
- ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+ ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             elevation: 0,
             behavior: SnackBarBehavior.floating,
             backgroundColor: Colors.transparent,
@@ -58,7 +58,7 @@ class _LoginState extends State<Login> {
   
 },).whenComplete(() {
       authProvider.setLoading(false);
-    });;
+    });
             
     }
 
@@ -128,7 +128,7 @@ class _LoginState extends State<Login> {
                       val.setPassoward1();
                     },
                     child: Icon(val.visibile_passoward_login? Icons.visibility_off_outlined: Icons.visibility_outlined  )),
-                 prefixIcon:  Icon(Icons.lock_open),
+                 prefixIcon:  const Icon(Icons.lock_open),
                   hintText: 'Enter Passoward',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(11),
@@ -156,7 +156,7 @@ class _LoginState extends State<Login> {
                   ),
                   onPressed: (){
                   Login();
-                }, child: vale.isLoading? CircularProgressIndicator(color: Colors.white,):Text('Log in',style: TextStyle(color: Colors.white),));
+                }, child: vale.isLoading? const CircularProgressIndicator(color: Colors.white,):const Text('Log in',style: TextStyle(color: Colors.white),));
  
                 },)             ),
               const Gap(31),

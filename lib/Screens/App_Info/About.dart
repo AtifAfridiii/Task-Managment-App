@@ -8,17 +8,17 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text('About us',style: TextStyle(fontWeight: FontWeight.bold),),
+        title: const Text('About us',style: TextStyle(fontWeight: FontWeight.bold),),
         centerTitle: true,
         leading: IconButton(
           onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Home(),));
-        }, icon: Icon(Icons.close)),
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const Home(),));
+        }, icon: const Icon(Icons.close)),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Column(
               children: [
                Text.rich(

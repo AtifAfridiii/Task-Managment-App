@@ -6,6 +6,8 @@ import 'package:todo/Screens/Home.dart';
 import 'package:todo/Screens/task_card.dart';
 
 class TaskScreen extends StatefulWidget {
+  const TaskScreen({super.key});
+
   @override
   _TaskScreenState createState() => _TaskScreenState();
 }
@@ -50,11 +52,11 @@ class _TaskScreenState extends State<TaskScreen> {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => Home(),
+                builder: (context) => const Home(),
               ),
             );
           },
-          icon: Icon(Icons.close),
+          icon: const Icon(Icons.close),
         ),
       ),
       body: SafeArea(
@@ -73,17 +75,17 @@ class _TaskScreenState extends State<TaskScreen> {
   lastDay: DateTime(2095),
   focusedDay: _selectedDate,
   calendarFormat: CalendarFormat.week,
-  calendarStyle: CalendarStyle(
+  calendarStyle: const CalendarStyle(
     defaultTextStyle: TextStyle(color: Colors.white),
    weekendTextStyle: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),
    
   ),
  headerStyle: HeaderStyle(
-    formatButtonTextStyle: TextStyle(fontSize: 15.0, color: Colors.white),
-    leftChevronIcon: Icon(Icons.chevron_left,color: Colors.white,),
-    rightChevronIcon: Icon(Icons.chevron_right,color: Colors.white),
+    formatButtonTextStyle: const TextStyle(fontSize: 15.0, color: Colors.white),
+    leftChevronIcon: const Icon(Icons.chevron_left,color: Colors.white,),
+    rightChevronIcon: const Icon(Icons.chevron_right,color: Colors.white),
     titleCentered: true,
-    titleTextStyle: TextStyle(color: Colors.white),
+    titleTextStyle: const TextStyle(color: Colors.white),
     
     formatButtonDecoration: BoxDecoration(
      
@@ -98,32 +100,32 @@ class _TaskScreenState extends State<TaskScreen> {
       _selectedDate = selectedDay;
     });
   },
-  daysOfWeekStyle: DaysOfWeekStyle(weekdayStyle: TextStyle(color: Colors.white),weekendStyle: TextStyle(color: Colors.red),
+  daysOfWeekStyle: const DaysOfWeekStyle(weekdayStyle: TextStyle(color: Colors.white),weekendStyle: TextStyle(color: Colors.red),
   ),
   calendarBuilders: CalendarBuilders(
     selectedBuilder: (context, date, events) => Container(
       margin: const EdgeInsets.all(4.0),
       alignment: Alignment.center,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.green, // change the background color of the selected date
         shape: BoxShape.circle,
       ),
       child: Text(
         date.day.toString(),
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
     ),
     
     todayBuilder: (context, date, events) => Container(
       margin: const EdgeInsets.all(4.0),
       alignment: Alignment.center,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.blue, // change the background color of today's date
         shape: BoxShape.circle,
       ),
       child: Text(
         date.day.toString(),
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
     ),
   ),
@@ -131,7 +133,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 },
               ),
             ),
-        Gap(21),
+        const Gap(21),
             // Buttons to toggle between Today and Completed
             Container(
               width: 381,
@@ -159,7 +161,7 @@ class _TaskScreenState extends State<TaskScreen> {
                         ),
                         borderRadius: BorderRadius.circular(5)
                       ),
-                      child: Center(child: Text('Today',style: TextStyle(color: Colors.white),),),
+                      child: const Center(child: Text('Today',style: TextStyle(color: Colors.white),),),
                     ),
                   ),
                   InkWell(
@@ -178,7 +180,7 @@ class _TaskScreenState extends State<TaskScreen> {
                         ),
                         borderRadius: BorderRadius.circular(5)
                       ),
-                      child: Center(child: Text('Completed',style: TextStyle(color: Colors.white),),),
+                      child: const Center(child: Text('Completed',style: TextStyle(color: Colors.white),),),
                     ),
                   )
                   
@@ -186,7 +188,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 ],
               ),
             ),
-           Gap(11),
+           const Gap(11),
             
             Expanded(
               child: Padding(
@@ -195,11 +197,11 @@ class _TaskScreenState extends State<TaskScreen> {
                   stream:ref.where('doc_id', isEqualTo: auth.currentUser!.uid).snapshots(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator(color: Colors.purple,));
+                      return const Center(child: CircularProgressIndicator(color: Colors.purple,));
                     }
                         
                     if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                      return Center(child: Text('No tasks available'));
+                      return const Center(child: Text('No tasks available'));
                     }
                         
                     // Extract tasks from Firestore
@@ -229,7 +231,7 @@ class _TaskScreenState extends State<TaskScreen> {
                       return timeA.compareTo(timeB);
                     });
                     if (filteredTasks.isEmpty) {
-                      return Center(child: Text('No tasks found for the selected criteria'));
+                      return const Center(child: Text('No tasks found for the selected criteria'));
                     }
                         
                     return ListView.builder(

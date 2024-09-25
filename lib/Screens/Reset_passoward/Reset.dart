@@ -14,8 +14,8 @@ class ChangePassword extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
-        }, icon: Icon(Icons.close)),
-        title: Text('Reset Passoward',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+        }, icon: const Icon(Icons.close)),
+        title: const Text('Reset Passoward',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
        centerTitle: true,
       ),
       body: Form(
@@ -24,10 +24,10 @@ class ChangePassword extends StatelessWidget {
           padding: const EdgeInsets.all(11),
           child: Column(
             children: [
-              Gap(91),
+              const Gap(91),
                 TextFormField(
                   controller: email,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Email',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.email_outlined)
@@ -39,7 +39,7 @@ class ChangePassword extends StatelessWidget {
                 return null;
                 }
                 ),
-                Gap(51) ,
+                const Gap(51) ,
                InkWell(
                 onTap: ()async{
                 if (_form_key.currentState!.validate()){
@@ -55,7 +55,7 @@ class ChangePassword extends StatelessWidget {
                   },
                 ).onError((error, stackTrace) {
                   Fluttertoast.showToast(
-                      msg: '${error.toString()}',
+                      msg: error.toString(),
                     backgroundColor: Colors.red,
                      gravity: ToastGravity.BOTTOM,
                   );
@@ -78,7 +78,7 @@ class ChangePassword extends StatelessWidget {
                     borderRadius: BorderRadius.circular(11),
                  
                   ),
-                  child: Center(child: Text('Reset Passoward',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),),
+                  child: const Center(child: Text('Reset Passoward',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),),
                  ),
                )
             ],

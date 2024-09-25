@@ -57,14 +57,14 @@ Widget _buildHeader() {
   return Consumer<ThemeProvider>(
     builder: (context, valie, child) {
     return DrawerHeader(
-    decoration: BoxDecoration(color: valie.isDarkMode? Color(0xff708985) : Color(0xff1D1E22)),
+    decoration: BoxDecoration(color: valie.isDarkMode? const Color(0xff708985) : const Color(0xff1D1E22)),
     child: Column(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           backgroundImage: AssetImage('Assets/images/pro.png'),
           radius: 40,
         ),
-        Gap(21),
+        const Gap(21),
         if (auth.currentUser != null) 
           StreamBuilder(
             stream: FirebaseFirestore
@@ -75,7 +75,7 @@ Widget _buildHeader() {
             builder: (context, snapshot) {
               return Text(
                 userEmail.toString(),
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 17,
                   color: Colors.white,
@@ -84,7 +84,7 @@ Widget _buildHeader() {
             },
           )
         else 
-          Text(
+          const Text(
             'Please log in',
             style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -150,17 +150,17 @@ final _formkey = GlobalKey<FormState>();
                               );
                               if (result != null && result is Map<String, dynamic>) {
                                 categoryProvider.addCategory(result);
-                                Navigator.pop(context); // Close the dialog
-                                _buildCategory(context); // Reopen the dialog to show the new category
+                                Navigator.pop(context); 
+                                _buildCategory(context); 
                               }
                             },
                           );
                         } else {
-                          // This is a category item
+                          
                           return _buildCategoryItem(
                             icon: categoryProvider.categories[index]['icon'],
                             onTap: () {
-                              // Handle category selection
+                             
                               Navigator.pop(context);
                             },
                           );
@@ -211,7 +211,7 @@ Widget _buildCategoryItem({required IconData icon, required VoidCallback onTap})
 }  // Track selected index
 
 
-  // Update index when an item is tapped
+  
  void _onNavBarItemTapped(BuildContext context, int index) {
   final navigationProvider = Provider.of<NavigationProvider>(context, listen: false);
   navigationProvider.selectIndex(index);
@@ -219,16 +219,15 @@ Widget _buildCategoryItem({required IconData icon, required VoidCallback onTap})
   // Navigate to different pages based on the tapped index
   switch (index) {
     case 0:
-      // Handle the case for index 0, if needed
       break;
     case 1:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => TaskScreen()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const TaskScreen()));
       break;
     case 2:
       Navigator.push(context, MaterialPageRoute(builder: (context) => const Digi_Watch()));
       break;
     case 3:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Profile()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
       break;
   }
 }
@@ -305,7 +304,7 @@ late int notification ;
  
     return Scaffold(
       appBar: AppBar(
-        title: Text('Index',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+        title: const Text('Index',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -349,7 +348,7 @@ late int notification ;
           ),
         ),
             ),
-         Gap(21),
+         const Gap(21),
       
 Padding(
   padding: const EdgeInsets.only(left:19),
@@ -364,7 +363,7 @@ Padding(
       child: DropdownButton<String>(
         value: selectedFilter,
          dropdownColor: Colors.grey.shade900,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         underline: Container(), 
         iconEnabledColor: Colors.white,
         items: <String>['Recent', 'High', 'Medium', 'Low']
@@ -456,7 +455,7 @@ sortedTasks.sort((a, b) {
                       String formattedTime = formatDateTime(date, time);
                       String Title = task['title'].toString(); 
                       String priority = task['priority'].toString();
-                      int notification_id = task['notification_Id'];
+                      int notificationId = task['notification_Id'];
                       
                         if(search_Controller.text.isEmpty){
                           return InkWell(
@@ -473,7 +472,7 @@ sortedTasks.sort((a, b) {
                       iconCodePoint: icon,
                       isComplete: isCompleted,
                       priority: priority,
-                      notificationId: notification_id,
+                      notificationId: notificationId,
                     ),
                   ),
                 );
@@ -483,7 +482,7 @@ sortedTasks.sort((a, b) {
                 child:Consumer<ThemeProvider>(
                   builder: (context, valii, child) {
                   return  Card( 
-                  color:valii.isDarkMode? Color(0xff547d5b) : const Color(0xffe2dfd2),
+                  color:valii.isDarkMode? const Color(0xff547d5b) : const Color(0xffe2dfd2),
                   child: Column(
                     children: [
                       ListTile(
@@ -556,7 +555,7 @@ sortedTasks.sort((a, b) {
             onTap: () {
               Navigator.of(newContext, rootNavigator: true).pop();
               edit_ref.doc(id).delete().then((value) {
-                Notification_Service.cancelNotification(notification_id);
+                Notification_Service.cancelNotification(notificationId);
                 Fluttertoast.showToast(
                   msg: "Task Deleted",
                   toastLength: Toast.LENGTH_SHORT,
@@ -605,10 +604,10 @@ sortedTasks.sort((a, b) {
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Center(
-                                child: Text(priority,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),)
+                                child: Text(priority,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),)
                               ),
                             ),
-                            Gap(11),
+                            const Gap(11),
                             Container(
                               height: 21,
                               width: 41,
@@ -659,7 +658,7 @@ sortedTasks.sort((a, b) {
                       iconCodePoint: icon,
                       isComplete: isCompleted,
                       priority: priority, 
-                      notificationId: notification_id,
+                      notificationId: notificationId,
                     ),
                   ),
                 );
@@ -669,7 +668,7 @@ sortedTasks.sort((a, b) {
                 child:Consumer<ThemeProvider>(
                   builder: (context, valii, child) {
                   return  Card( 
-                  color:valii.isDarkMode? Color(0xff547d5b) : const Color(0xffe2dfd2),
+                  color:valii.isDarkMode? const Color(0xff547d5b) : const Color(0xffe2dfd2),
                   child: Column(
                     children: [
                       ListTile(
@@ -742,7 +741,7 @@ sortedTasks.sort((a, b) {
             onTap: () {
               Navigator.of(newContext, rootNavigator: true).pop();
               edit_ref.doc(id).delete().then((value) {
-                Notification_Service.cancelNotification(notification_id);
+                Notification_Service.cancelNotification(notificationId);
                 Fluttertoast.showToast(
                   msg: "Task Deleted",
                   toastLength: Toast.LENGTH_SHORT,
@@ -791,10 +790,10 @@ sortedTasks.sort((a, b) {
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Center(
-                                child: Text(priority,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),)
+                                child: Text(priority,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),)
                               ),
                             ),
-                            Gap(11),
+                            const Gap(11),
                             Container(
                               height: 21,
                               width: 41,
@@ -830,7 +829,7 @@ sortedTasks.sort((a, b) {
                     );
                 
                         }else{
-                          return Center(child: Text(''));
+                          return const Center(child: Text(''));
                         }
         
                          },
@@ -859,7 +858,7 @@ sortedTasks.sort((a, b) {
             icon: CupertinoIcons.person,
             title: 'Profile',
             onTap: () => {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Profile(),))
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile(),))
             },
           ),
         Consumer<ThemeProvider>(
@@ -1173,14 +1172,14 @@ Future<void> _showPriorityDialog(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text("Select Priority"),
+        title: const Text("Select Priority"),
         content: StatefulBuilder(
           builder: (context, setState) {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 CheckboxListTile(
-                  title: Text("High"),
+                  title: const Text("High"),
                   value: isHigh,
                   onChanged: (value) {
                     setState(() {
@@ -1194,7 +1193,7 @@ Future<void> _showPriorityDialog(BuildContext context) {
                   },
                 ),
                 CheckboxListTile(
-                  title: Text("Medium"),
+                  title: const Text("Medium"),
                   value: isMedium,
                   onChanged: (value) {
                     setState(() {
@@ -1208,7 +1207,7 @@ Future<void> _showPriorityDialog(BuildContext context) {
                   },
                 ),
                 CheckboxListTile(
-                  title: Text("Low"),
+                  title: const Text("Low"),
                   value: isLow,
                   onChanged: (value) {
                     setState(() {
@@ -1233,7 +1232,7 @@ Future<void> _showPriorityDialog(BuildContext context) {
               }
               Navigator.pop(context); 
             },
-            child: Text("Save"),
+            child: const Text("Save"),
           ),
         ],
       );
@@ -1304,20 +1303,14 @@ edit_description.text=description ;
                   'title': edit_title.text,
                   'description': edit_description.text,
                 }).then((value) {
-                  
-                  // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Task updated',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-                  // behavior: SnackBarBehavior.floating,
-                  // backgroundColor: Colors.green,
-                  // ),
-                  
-                  // );
+                  Fluttertoast.showToast(msg:'Task updated' ,
+                  backgroundColor: Colors.green,
+                  gravity: ToastGravity.BOTTOM,
+
+                  );
+                 
                 },).onError((error, stackTrace) {
-                  // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$error',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-                  // behavior: SnackBarBehavior.floating,
-                  // backgroundColor: Colors.red,
-                  // ),
-                  
-                  // );
+                 
                 },);
                
               }

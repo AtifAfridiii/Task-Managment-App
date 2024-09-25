@@ -24,7 +24,7 @@ class NotificationUtils {
 
       if (scheduleDateTZ.isBefore(DateTime.now())) {
         print("Scheduled time is in the past. Adjusting to future.");
-        scheduleDateTZ = scheduleDateTZ.add(Duration(days: 1));
+        scheduleDateTZ = scheduleDateTZ.add(const Duration(days: 1));
       }
 
       int notificationId = dateTime.millisecondsSinceEpoch.remainder(1000000);

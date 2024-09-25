@@ -31,7 +31,7 @@ class BottomNavCurvePainter extends CustomPainter {
     path.lineTo(
         0,
         size.height +
-            56); //+56 here extends the navbar below app bar to include extra space on some screens (iphone 11)
+            56); 
     canvas.drawPath(path, paint);
   }
 
